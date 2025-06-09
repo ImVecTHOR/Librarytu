@@ -22,28 +22,26 @@ function checarHorario() {
     console.log(`Agora são ${horas}:${minutos < 10 ? '0' + minutos : minutos}`);
 
     // Lógica de horário
-    // Se for 17:27 → troca para especial
-    if (horas === 17 && minutos === 28) {
+    // Após 17:48 → LUA
+    if (horas === 17 && minutos === 48) {
         trocarFavicon('images/LUA/favicon-32x32.png');
     }
-    // Se for 6:32 → volta para padrão
+    // Após 6:32 → SOL
     else if (horas === 6 && minutos === 48) {
         trocarFavicon('images/SOL/favicon-32x32.png');
     }
-    // Se estiver entre 17:27 e antes de 6:32 → mantém especial
+    // Após 17:48 e antes de 6:32 = LUA
     else if (
         (horas > 17 || (horas === 17 && minutos > 48)) ||
         (horas < 6 || (horas === 6 && minutos < 32))
     ) {
         trocarFavicon('images/LUA/favicon-32x32.png');
     }
-    // Caso contrário → padrão
     else {
         trocarFavicon('images/SOL/favicon-32x32.png');
     }
 }
 
-// Checa a cada 5 segundos
 setInterval(checarHorario, 5000);
 checarHorario();
 

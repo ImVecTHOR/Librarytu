@@ -26,8 +26,8 @@ h1 {
 
 body {
   display: grid;
-  place-items: center;
-  min-height: 100vh;
+  /* place-items: center;
+  min-height: 100vh; */
   font-family:  'Google Sans', sans-serif, system-ui;
   background: var(--gradient-1);
 }
@@ -49,6 +49,12 @@ body {
 .block:nth-of-type(3){--hue: 290;}
 
 .blocks {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 15%;
+  max-height: 15%;
   display: flex;
   list-style-type: none;
   padding: var(--size-2);
