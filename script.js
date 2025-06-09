@@ -1,3 +1,5 @@
+//FAVICON DINÂMICO----------------------------------------------------------------------
+
 function trocarFavicon(novoIcone) {
     const favicon = document.getElementById('favicon');
     if (favicon) {
@@ -44,3 +46,5 @@ function checarHorario() {
 // Checa a cada 5 segundos
 setInterval(checarHorario, 5000);
 checarHorario();
+
+//------------------------------------------------------------------------------------------------

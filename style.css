@@ -25,11 +25,15 @@ h1 {
 }
 
 body {
+  position: relative;
   display: grid;
-  place-items: center;
   min-height: 100vh;
   font-family:  'Google Sans', sans-serif, system-ui;
-  background: var(--gradient-6);
+  background: var(--gradient-1);
+}
+
+:root {
+  --gradient-1: linear-gradient(30deg, #119600, #0e0f0f);
 }
 
 /*:root {
@@ -123,7 +127,7 @@ body {
 }
 
 .block__item {
-  width: 100%;
+  width: 150%;  
   aspect-ratio: 1;
   border-radius: var(--radius-2);
   background:
@@ -142,9 +146,6 @@ body {
 
 /*@media(prefers-color-scheme: dark) {
 }*/
-body {
-  background: var(--gradient-23);
-}
 .blocks {
   background: hsl(0 0% 0% / 0.5);
 }
