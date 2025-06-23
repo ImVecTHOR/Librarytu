@@ -46,3 +46,84 @@ setInterval(checarHorario, 5000);
 checarHorario();
 
 //------------------------------------------------------------------------------------------------
+
+const input = document.getElementById('input');
+const output = document.getElementById('output');
+const terminal = document.getElementById('terminal');
+const cursor = document.getElementById('cursor');
+const mirror = document.getElementById('mirror');
+
+let commandHistory = [];
+let historyIndex = -1;
+
+// Foco no input ao clicar em qualquer parte do terminal
+terminal.addEventListener('click', () => input.focus());
+
+// Atualiza posição do cursor
+const updateCursorPosition = () => {
+    mirror.textContent = input.value;
+    const mirrorWidth = mirror.offsetWidth;
+    cursor.style.left = `${mirrorWidth + 2}px`;
+};
+
+// Evento de entrada de dados
+input.addEventListener('input', updateCursorPosition);
+
+input.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        const command = input.value.trim();
+        if (command) {
+            commandHistory.push(command);
+            historyIndex = commandHistory.length;
+        }
+        processCommand(command);
+        input.value = '';
+        updateCursorPosition();
+    }
+
+    // Histórico com setas ↑ e ↓
+    if (event.key === 'ArrowUp') {
+        if (historyIndex > 0) {
+            historyIndex--;
+            input.value = commandHistory[historyIndex] || '';
+            updateCursorPosition();
+        }
+    } else if (event.key === 'ArrowDown') {
+        if (historyIndex < commandHistory.length - 1) {
+            historyIndex++;
+            input.value = commandHistory[historyIndex] || '';
+        } else {
+            historyIndex = commandHistory.length;
+            input.value = '';
+        }
+        updateCursorPosition();
+    }
+});
+
+// Comandos e animações
+function processCommand(command) {
+    output.innerHTML += `\nC:\\> ${command}`;
+
+    switch (command.toLowerCase()) {
+        case 'hello world':
+            output.innerHTML += '\n:D';
+            break;
+        case 'help':
+            output.innerHTML += '\nComandos disponíveis:\n- hello world\n- clear\n- help';
+            break;
+        case 'clear':
+            output.innerHTML = '';
+            break;
+        case '':
+            // Não faz nada se pressionar Enter vazio
+            break;
+        default:
+            output.innerHTML += `\n'${command}' não é reconhecido como um comando interno ou externo.`;
+            break;
+    }
+
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
+// Inicializa cursor na posição correta
+updateCursorPosition();
