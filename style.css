@@ -54,7 +54,7 @@ input {
     font-size: 1em;
     outline: none;
     width: 100%;
-    caret-color: transparent; /* Esconde o cursor nativo */
+    caret-color: transparent;
 }
 
 .cursor {

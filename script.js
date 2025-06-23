@@ -56,17 +56,14 @@ const mirror = document.getElementById('mirror');
 let commandHistory = [];
 let historyIndex = -1;
 
-// Foco no input ao clicar em qualquer parte do terminal
 terminal.addEventListener('click', () => input.focus());
 
-// Atualiza posição do cursor
 const updateCursorPosition = () => {
     mirror.textContent = input.value;
     const mirrorWidth = mirror.offsetWidth;
     cursor.style.left = `${mirrorWidth + 2}px`;
 };
 
-// Evento de entrada de dados
 input.addEventListener('input', updateCursorPosition);
 
 input.addEventListener('keydown', function(event) {
@@ -81,7 +78,6 @@ input.addEventListener('keydown', function(event) {
         updateCursorPosition();
     }
 
-    // Histórico com setas ↑ e ↓
     if (event.key === 'ArrowUp') {
         if (historyIndex > 0) {
             historyIndex--;
@@ -100,9 +96,8 @@ input.addEventListener('keydown', function(event) {
     }
 });
 
-// Comandos e animações
 function processCommand(command) {
-    output.innerHTML += `\nC:\\> ${command}`;
+    output.innerHTML += `\nE:\\> ${command}`;
 
     switch (command.toLowerCase()) {
         case 'hello world':
@@ -115,7 +110,9 @@ function processCommand(command) {
             output.innerHTML = '';
             break;
         case '':
-            // Não faz nada se pressionar Enter vazio
+            break;
+        case 'cato':
+            output.innerHTML += '\n▄───▄\n█▀█▀█\n█▄█▄█\n─███──▄▄\n─████▐█─█\n─████───█\n─▀▀▀▀▀▀▀';
             break;
         default:
             output.innerHTML += `\n'${command}' não é reconhecido como um comando interno ou externo.`;
@@ -125,5 +122,4 @@ function processCommand(command) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
-// Inicializa cursor na posição correta
 updateCursorPosition();
