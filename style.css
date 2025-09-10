@@ -75,3 +75,52 @@ input {
     font-family: monospace;
     font-size: 1em;
 }
+
+/* Container do preview */
+.site-preview {
+    position: fixed;
+    top: 13vh;          /* 10% do topo da tela */
+    right: 2%;         /* 2% da direita da tela */
+    width: 70vw;       /* ocupa 70% da largura da viewport */
+    max-width: 800px; /* limite máximo para telas grandes */
+    padding: 10px;
+    background: rgba(0, 191, 0, 0.3); /* fundo translúcido */
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* itens empilhados verticalmente */
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+/* Imagem dentro do preview */
+.site-preview-img {
+    width: 100%;        /* ocupa toda a largura do container */
+    max-height: 80vh;   /* não ultrapassa 60% da altura da viewport */
+    height: auto;       /* mantém proporção */
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Descrição abaixo da imagem */
+.site-description {
+    margin-top: 5px;
+    font-size: clamp(12px, 1.5vw, 18px); /* tamanho responsivo entre 12px e 18px */
+    color: #ccc;       /* cor clara para tema escuro */
+    text-align: center;
+}
+
+/* Media queries para telas pequenas */
+@media (max-width: 768px) {
+    .site-preview {
+        width: 90vw;   /* ocupa quase toda a largura em mobile */
+        top: 5%;
+        right: 5%;
+    }
+
+    .site-preview-img {
+        max-height: 50vh; /* reduz altura máxima em telas pequenas */
+    }
+}
