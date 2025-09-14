@@ -13,7 +13,7 @@
 body.light {
   --bg: #f8f9fa;
   --card: #ffffff;
-  --text: #222;
+  --text: #000000;
   --muted: #555;
   --accent: #2ecc71;
   --accent-hover: #27ae60;
@@ -25,6 +25,51 @@ body {
   color: var(--text);
   font-family: 'Inter', sans-serif;
   transition: background 0.3s, color 0.3s;
+}
+
+/* Header no modo claro */
+body.light .site-header {
+  background: #313131; /* fundo preto */
+  color: #fff;      /* texto branco */
+}
+
+/* Logo texto */
+body.light .logo-text {
+  color: #fff;      /* texto da logo branco */
+}
+
+/* Mantém o T verde */
+body.light .logo-mark {
+  color: #000;           /* texto interno do T */
+  background: var(--accent); /* verde original */
+}
+
+/* Links do header */
+body.light .main-nav a {
+  color: #fff;      /* links brancos */
+}
+body.light .main-nav a:hover {
+  color: var(--accent); /* azul no hover */
+}
+
+/* Botão de tema no header modo claro */
+body.light #theme-toggle {
+  color: #fff;
+}
+body.light #theme-toggle:hover {
+  color: var(--accent);
+}
+
+/* Tabelas modo claro */
+body.light .table-box {
+  background: #f0f0f0;
+}
+body.light .table-box th {
+  background: #e0e0e0;
+  color: var(--accent);
+}
+body.light .table-box tr:nth-child(even) {
+  background: #eaeaea;
 }
 
 .container {
@@ -43,6 +88,7 @@ body {
   z-index: 10;
   transition: background 0.3s;
 }
+
 .site-header.scrolled {
   background: rgba(17, 17, 17, 0.6);
   backdrop-filter: blur(12px);
@@ -53,7 +99,14 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-.logo { text-decoration: none; color: var(--text); font-weight: bold; font-size: 1.2rem; }
+
+.logo {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 .logo-mark {
   background: var(--accent);
   padding: 6px 12px;
@@ -61,6 +114,7 @@ body {
   color: #000;
   font-weight: bold;
 }
+
 .main-nav ul {
   display: flex;
   gap: 20px;
@@ -68,9 +122,20 @@ body {
   margin: 0;
   padding: 0;
 }
-.main-nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
-.main-nav a:hover { color: var(--accent); }
-.header-actions { display: flex; }
+
+.main-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  color: var(--accent);
+}
+
+.header-actions {
+  display: flex;
+}
 
 /* Botão de tema */
 #theme-toggle {
@@ -81,26 +146,36 @@ body {
   color: var(--text);
   transition: transform .2s ease;
 }
+
 #theme-toggle:hover {
   transform: scale(1.2);
   color: var(--accent);
 }
 
 /* Cards */
-.card-top, .card-big {
+.card-top,
+.card-big {
   background: var(--card);
   border-radius: var(--radius);
   padding: 24px;
   margin: 20px 0;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   transition: transform .2s ease, box-shadow .2s ease, background .3s;
 }
-.card-top:hover, .card-big:hover {
+
+.card-top:hover,
+.card-big:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
 }
-.card-top h1 { margin-top: 0; }
-.card-big h2 { margin-top: 0; }
+
+.card-top h1 {
+  margin-top: 0;
+}
+
+.card-big h2 {
+  margin-top: 0;
+}
 
 /* Botões */
 .buttons-row {
@@ -109,6 +184,7 @@ body {
   margin-bottom: 20px;
   flex-wrap: wrap;
 }
+
 .tab-btn {
   background: linear-gradient(135deg, var(--accent), var(--accent-hover));
   border: none;
@@ -119,9 +195,10 @@ body {
   color: #000;
   transition: transform .15s ease, box-shadow .15s ease;
 }
+
 .tab-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
 }
 
 /* Tabelas */
@@ -132,48 +209,67 @@ body {
   margin-bottom: 20px;
   animation: fadeIn .4s ease;
 }
+
 body.light .table-box {
   background: #f0f0f0;
 }
+
 .table-box h3 {
   margin-top: 0;
   margin-bottom: 12px;
   color: var(--accent);
 }
+
 .table-box table {
   width: 100%;
   border-collapse: collapse;
 }
-.table-box th, .table-box td {
+
+.table-box th,
+.table-box td {
   padding: 12px;
   text-align: left;
 }
+
 .table-box th {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--accent);
   font-weight: bold;
 }
+
 body.light .table-box th {
   background: #e0e0e0;
 }
+
 .table-box tr:nth-child(even) {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
+
 body.light .table-box tr:nth-child(even) {
   background: #eaeaea;
 }
+
 .table-box tr:hover {
-  background: rgba(255,255,255,0.07);
+  background: rgba(255, 255, 255, 0.07);
   transition: background .2s;
 }
 
 /* Esconde */
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 /* Animação */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -181,7 +277,7 @@ body.light .table-box tr:nth-child(even) {
 .detail-card {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,7 +296,7 @@ body.light .table-box tr:nth-child(even) {
   width: 600px;
   max-width: 90%;
   position: relative;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   animation: fadeIn 0.3s ease;
 }
 
@@ -231,6 +327,43 @@ body.light .table-box tr:nth-child(even) {
 }
 
 @keyframes fadeIn {
-  from {opacity: 0; transform: scale(0.9);}
-  to {opacity: 1; transform: scale(1);}
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Links dentro das tabelas */
+.table-box a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+/* Linha animada no hover */
+.table-box a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.table-box a:hover::after {
+  width: 100%;
+}
+
+/* Escala levemente no hover */
+.table-box a:hover {
+  transform: scale(1.05);
 }
