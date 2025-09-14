@@ -1,15 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Librarytu</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
   <link id="favicon" rel="icon" type="image/png" href="images/SOL/favicon-32x32.png">
-<script src="favicon.js" defer></script>  
+  <script src="favicon.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- =======================
+       Header
+  ======================= -->
   <header class="site-header" id="site-header">
     <div class="container header-grid">
       <div class="brand">
@@ -23,7 +27,7 @@
         <ul>
           <li><a href="index.html">Menu</a></li>
           <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="contato;html">Contato</a></li>
+          <li><a href="contato.html">Contato</a></li>
         </ul>
       </nav>
 
@@ -33,40 +37,69 @@
     </div>
   </header>
 
-  <!-- Conteúdo -->
+  <!-- =======================
+       Conteúdo Principal
+  ======================= -->
   <main class="container content">
+
+    <!-- Card Topo Informativo -->
     <section class="card-top">
-      <p>Essa página é dedicada para servir como uma central para sites desconhecidos, porem uteis, se quiser saber mais acesse <a href="sobre">"Sobre"<a></p>
-    </section>
-    <section class="card-top">
-      <h1>🚀 Atualizaçôes 13/09/2025</h1>
-      <p>Este é um card extenso no topo, usado para destacar um conteúdo importante ou notícia principal. Totalmente customizável e estilizado.</p>
+      <p>
+        Esta página serve como central de sites desconhecidos, mas úteis. 
+        Saiba mais em <a href="sobre.html">Sobre</a>.
+      </p>
     </section>
 
+    <!-- Card Topo de Atualizações -->
+    <section class="card-top">
+      <h1>🚀 Atualizações 13/09/2025</h1>
+      <p>
+        Este card extenso no topo destaca conteúdo importante ou notícias principais. 
+        Totalmente customizável e estilizado.
+      </p>
+    </section>
+
+    <!-- Card Grande de Categorias -->
     <section class="card-big">
       <h2>📌 Escolha uma categoria</h2>
-      <div class="buttons-row" id="buttons-row">
-        <!-- Botões gerados pelo JS -->
-      </div>
 
-      <div id="tables-area">
-        <!-- Tabelas geradas pelo JS -->
-      </div>
+      <!-- Botões das categorias gerados pelo JS -->
+      <div class="buttons-row" id="buttons-row"></div>
+
+      <!-- Área das tabelas geradas pelo JS -->
+      <div id="tables-area"></div>
     </section>
+    
   </main>
 
-  <!-- Card de Detalhes -->
+  <!-- =======================
+       Card de Detalhes
+  ======================= -->
   <div id="detail-card" class="detail-card hidden">
     <div class="detail-content">
-      <button id="close-detail">✖</button>
+      <button id="close-detail" aria-label="Fechar detalhe">✖</button>
       <h3 id="detail-title"></h3>
-      <div class="carousel" id="carousel">
-        <!-- Imagens inseridas via JS -->
-      </div>
       <p id="detail-description"></p>
+      <button id="show-images" class="show-images-btn">📷 Mostrar Imagens</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- =======================
+       Carrossel Modal
+  ======================= -->
+<div id="carousel-modal" class="carousel-modal hidden">
+  <div class="carousel-modal-content">
+    <button id="close-carousel" aria-label="Fechar carrossel">✖</button>
+    <div class="carousel-large" id="carousel-large"></div>
+
+    <!-- Bolinhas de indicador -->
+    <div class="carousel-indicators" id="carousel-indicators"></div>
+
+    <button id="prev-img" class="carousel-btn" aria-label="Imagem anterior">◀</button>
+    <button id="next-img" class="carousel-btn" aria-label="Próxima imagem">▶</button>
+  </div>
+</div>
+
+
 </body>
 </html>
