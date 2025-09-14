@@ -1,27 +1,69 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo com Header + Cards Dinâmicos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link id="favicon" rel="icon" type="image/png" href="images/SOL/favicon-32x32.png">
+<script src="favicon.js" defer></script>
 </head>
-
 <body>
-    <div class="terminal" id="terminal">
-        <div class="output" id="output"></div>
-        <div class="input-line">
-            <span class="prompt">E:\></span>
-            <div class="input-container">
-                <input type="text" id="input" autofocus autocomplete="off">
-                <span class="text-mirror" id="mirror"></span>
-                <span class="cursor" id="cursor">█</span>
-            </div>
-        </div>
+  <!-- Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-grid">
+      <div class="brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">T</span>
+          <span class="logo-text">TechNews</span>
+        </a>
+      </div>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Assuntos</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" aria-label="Alternar tema">🌓</button>
+      </div>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <!-- Conteúdo -->
+  <main class="container content">
+    <section class="card-top">
+      <h1>🚀 Destaque do Dia</h1>
+      <p>Este é um card extenso no topo, usado para destacar um conteúdo importante ou notícia principal. Totalmente customizável e estilizado.</p>
+    </section>
+
+    <section class="card-big">
+      <h2>📌 Escolha um assunto</h2>
+      <div class="buttons-row" id="buttons-row">
+        <!-- Botões gerados pelo JS -->
+      </div>
+
+      <div id="tables-area">
+        <!-- Tabelas geradas pelo JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Card de Detalhes -->
+  <div id="detail-card" class="detail-card hidden">
+    <div class="detail-content">
+      <button id="close-detail">✖</button>
+      <h3 id="detail-title"></h3>
+      <div class="carousel" id="carousel">
+        <!-- Imagens inseridas via JS -->
+      </div>
+      <p id="detail-description"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-
 </html>

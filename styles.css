@@ -1,0 +1,236 @@
+:root {
+  --bg: #0f1113;
+  --card: #161a1d;
+  --accent: #2ecc71;
+  --accent-hover: #27ae60;
+  --text: #f2f5f7;
+  --muted: #a1acb2;
+  --radius: 14px;
+  --container: 1000px;
+}
+
+/* Tema Claro */
+body.light {
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #222;
+  --muted: #555;
+  --accent: #2ecc71;
+  --accent-hover: #27ae60;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+.site-header {
+  background: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background 0.3s;
+}
+.site-header.scrolled {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.header-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo { text-decoration: none; color: var(--text); font-weight: bold; font-size: 1.2rem; }
+.logo-mark {
+  background: var(--accent);
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+}
+.main-nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.main-nav a:hover { color: var(--accent); }
+.header-actions { display: flex; }
+
+/* Botão de tema */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform .2s ease;
+}
+#theme-toggle:hover {
+  transform: scale(1.2);
+  color: var(--accent);
+}
+
+/* Cards */
+.card-top, .card-big {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  transition: transform .2s ease, box-shadow .2s ease, background .3s;
+}
+.card-top:hover, .card-big:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+.card-top h1 { margin-top: 0; }
+.card-big h2 { margin-top: 0; }
+
+/* Botões */
+.buttons-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  border: none;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  color: #000;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.tab-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+/* Tabelas */
+.table-box {
+  background: #1d2226;
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 20px;
+  animation: fadeIn .4s ease;
+}
+body.light .table-box {
+  background: #f0f0f0;
+}
+.table-box h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-box th, .table-box td {
+  padding: 12px;
+  text-align: left;
+}
+.table-box th {
+  background: rgba(255,255,255,0.05);
+  color: var(--accent);
+  font-weight: bold;
+}
+body.light .table-box th {
+  background: #e0e0e0;
+}
+.table-box tr:nth-child(even) {
+  background: rgba(255,255,255,0.03);
+}
+body.light .table-box tr:nth-child(even) {
+  background: #eaeaea;
+}
+.table-box tr:hover {
+  background: rgba(255,255,255,0.07);
+  transition: background .2s;
+}
+
+/* Esconde */
+.hidden { display: none; }
+
+/* Animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ------------------- */
+.detail-card {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.detail-card.hidden {
+  display: none;
+}
+
+.detail-content {
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: 10px;
+  width: 600px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  animation: fadeIn 0.3s ease;
+}
+
+.detail-content h3 {
+  margin-bottom: 1rem;
+}
+
+#close-detail {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.carousel img {
+  max-height: 150px;
+  border-radius: 6px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
