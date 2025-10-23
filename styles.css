@@ -491,3 +491,85 @@ body.light .table-box tr:nth-child(even) {
   transform: scale(1.2);
 }
 
+/* ----------tabela escondida----------- */
+
+/* =======================
+   Modal de Sites Principais
+======================= */
+.main-sites-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4000;
+  transition: opacity 0.3s ease;
+}
+
+.main-sites-modal.hidden {
+  display: none;
+}
+
+.main-sites-content {
+  background: var(--bg);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: var(--radius);
+  width: 700px;
+  max-width: 95%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+  position: relative;
+}
+
+.main-sites-content h2 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.main-sites-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.main-sites-content th, 
+.main-sites-content td {
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.main-sites-content th {
+  background: rgba(255,255,255,0.05);
+  color: var(--accent);
+}
+
+.main-sites-content tr:nth-child(even) {
+  background: rgba(255,255,255,0.05);
+}
+
+.main-sites-content a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-sites-content a:hover {
+  text-decoration: underline;
+}
+
+#close-main-sites {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#close-main-sites:hover {
+  transform: scale(1.2);
+}
