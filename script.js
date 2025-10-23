@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabelaDados = {
     "Jogos": {
       emoji: "🎮",
-      headers: ["Site", "Sobre", "Link do Site"],
+      headers: ["Site", "Sobre", "Link"],
       rows: [
         {
           produto: "SteamDB",
           sobre: {
-            descricao: "Um notebook potente para trabalho e games.",
+            descricao: "O SteamDB é um site não oficial, bastante conhecido, usado principalmente para verificar o histórico de promoções dos jogos na Steam. Nele, você pode obter informações como: número de jogadores simultâneos, histórico de preços e até mesmo visualizar seus próprios dados (quanto gastou, por exemplo).",
             imagens: [
               "images/site/jogos/steamdb/menu.jpg",
               "images/site/jogos/steamdb/historico_preco.jpg",
@@ -44,27 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           produto: "Can You Run It",
           sobre: {
-            descricao: "Um smartphone moderno com câmera incrível.",
+            descricao: "Com esse site você consegue ver se seu computador roda tal jogo ou não, para facilitar sua vida (recomendavel baixar o programinha deles para ver seus componentes e realizar a comparação). Eu não diria que é com a maior precisão mas, pode te dar uma noção melhor",
             imagens: [
-              "https://via.placeholder.com/250x150/FF0000",
-              "https://via.placeholder.com/250x150/00FF00"
+              "images/site/jogos/canyourunit/cyri_menu.png",
+              "images/site/jogos/canyourunit/cyri_teste.png",
+              "images/site/jogos/canyourunit/cyri_teste2.png"
             ]
           },
           link: "https://www.systemrequirementslab.com/cyri"
         }
       ]
     },
-    "Games": {
-      emoji: "🎮",
-      headers: ["Título", "Sobre", "Nota"],
+    "Aleatórios": {
+      emoji: "👻",
+      headers: ["Título", "Sobre", "Link"],
       rows: [
         {
-          produto: "Jogo A",
+          produto: "Conga",
           sobre: {
-            descricao: "Um jogo de ação eletrizante.",
-            imagens: ["https://via.placeholder.com/250x150/222222"]
+            descricao: "Perde a graça se dizer oque é",
+            imagens: ["images/site/aleatorio/conga/trust_me.png"]
           },
-          link: "https://store.steampowered.com"
+          link: "https://matias.me/nsfw/"
         }
       ]
     }
