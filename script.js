@@ -32,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <td>limpeza e formatação</td>
             <td><a href="https://members.kiwify.com/login?club=1b687864-2c63-4d76-aeb6-c72a34b5ab03" target="_blank">Acessar</a></td>
           </tr>
+          <td>Curso</td>
+            <td>Megathread</td>
+            <td><a href="https://pirataria.link/" target="_blank">Acessar</a></td>
+          </tr>
           <tr>
             <td>Cupom1</td>
             <td></td>
@@ -117,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           produto: "Can You Run It",
           sobre: {
-            descricao: "Com esse site você consegue ver se seu computador roda tal jogo ou não, para facilitar sua vida (recomendavel baixar o programinha deles para ver seus componentes e realizar a comparação). Eu não diria que é com a maior precisão mas, pode te dar uma noção melhor",
+            descricao: "Com esse site você consegue ver se seu computador (entre aspas) roda tal jogo ou não, para facilitar sua vida (recomendavel baixar o programinha deles para ver seus componentes e realizar a comparação). Eu não diria que é com a maior precisão mas, pode te dar uma noção melhor",
             imagens: [
               "images/site/jogos/canyourunit/cyri_menu.png",
               "images/site/jogos/canyourunit/cyri_teste.png",
