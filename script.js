@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+  
   // =======================
   // Inserção do HTML para a Tabela de Sites Principais
   // =======================
@@ -18,38 +18,35 @@ document.addEventListener('DOMContentLoaded', () => {
         </thead>
         <tbody>
           <tr>
-            <td>Planilha</td>
-            <td></td>
-            <td><a href="https://docs.google.com/spreadsheets/d/1LP_puQk_0zGPby3ABx1Slz0y-eaDc9UdsFZ2oHAiC08/edit?hl=pt-br&gid=0#gid=0" target="_blank">Acessar</a></td>
-          </tr>
-          <tr>
             <td>Zona Morta</td>
             <td></td>
             <td><a href="https://dualshock-tools.github.io/" target="_blank">Acessar</a></td>
           </tr>
+
           <tr>
             <td>Curso</td>
             <td>limpeza e formatação</td>
             <td><a href="https://members.kiwify.com/login?club=1b687864-2c63-4d76-aeb6-c72a34b5ab03" target="_blank">Acessar</a></td>
           </tr>
-          <td>Curso</td>
-            <td>Megathread</td>
+
+          <tr>
+            <td>MegaThread</td>
+            <td></td>
             <td><a href="https://pirataria.link/" target="_blank">Acessar</a></td>
           </tr>
+
           <tr>
             <td>Cupom1</td>
             <td></td>
             <td><a href="https://www.cupom.org/" target="_blank">Acessar</a></td>
           </tr>
+
           <tr>
             <td>Cupom2</td>
             <td></td>
             <td><a href="https://pt.coupert.com/" target="_blank">Acessar</a></td>
           </tr>
-             <td>MobyGames</td>
-            <td></td>
-            <td><a href="https://www.mobygames.com/" target="_blank">Acessar</a></td>
-          </tr>
+
         </tbody>
       </table>
     </div>
@@ -317,21 +314,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.scrollY > 20) siteHeader.classList.add("scrolled");
     else siteHeader.classList.remove("scrolled");
   });
-});
-
-/* =======================
-   Atalho ALT + Z - Tabela de Sites Principais
-======================= */
-const mainSitesModal = document.getElementById("main-sites-modal");
-const closeMainSites = document.getElementById("close-main-sites");
-
-document.addEventListener("keydown", (e) => {
-  if (e.altKey && e.key.toLowerCase() === "z") {
-    e.preventDefault();
-    mainSitesModal.classList.toggle("hidden");
-  }
-});
-
-closeMainSites.addEventListener("click", () => {
-  mainSitesModal.classList.add("hidden");
 });
