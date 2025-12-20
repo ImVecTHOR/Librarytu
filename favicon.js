@@ -37,7 +37,7 @@ function checarHorario() {
     }
 }
 
-// Verifica a cada 5 segundos
-setInterval(checarHorario, 5000);
+// Verifica a cada 60 segundos
+setInterval(checarHorario, 60000);
 // Verificação inicial
 checarHorario();

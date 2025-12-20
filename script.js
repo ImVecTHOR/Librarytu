@@ -1,317 +1,312 @@
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // =======================
-  // Inserção do HTML para a Tabela de Sites Principais
-  // =======================
-  const modalHtml = `
-  <div id="main-sites-modal" class="main-sites-modal hidden">
-    <div class="main-sites-content">
-      <button id="close-main-sites" aria-label="Fechar tabela">✖</button>
-      <h2>🌐 Sites Principais</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Zona Morta</td>
-            <td></td>
-            <td><a href="https://dualshock-tools.github.io/" target="_blank">Acessar</a></td>
-          </tr>
-
-          <tr>
-            <td>Curso</td>
-            <td>limpeza e formatação</td>
-            <td><a href="https://members.kiwify.com/login?club=1b687864-2c63-4d76-aeb6-c72a34b5ab03" target="_blank">Acessar</a></td>
-          </tr>
-
-          <tr>
-            <td>MegaThread</td>
-            <td></td>
-            <td><a href="https://pirataria.link/" target="_blank">Acessar</a></td>
-          </tr>
-
-          <tr>
-            <td>Cupom1</td>
-            <td></td>
-            <td><a href="https://www.cupom.org/" target="_blank">Acessar</a></td>
-          </tr>
-
-          <tr>
-            <td>Cupom2</td>
-            <td></td>
-            <td><a href="https://pt.coupert.com/" target="_blank">Acessar</a></td>
-          </tr>
-
-        </tbody>
-      </table>
-    </div>
-  </div>
-`;
-
-  // Insere o HTML no fim do body
-  document.body.insertAdjacentHTML('beforeend', modalHtml);
-
-  // Agora seleciona elementos do modal
-  const mainSitesModal = document.getElementById("main-sites-modal");
-  const closeMainSites = document.getElementById("close-main-sites");
-
-  // Atalho ALT + Z para abrir/fechar
-  document.addEventListener("keydown", (e) => {
-    if (e.altKey && e.key.toLowerCase() === "z") {
-      e.preventDefault();
-      mainSitesModal.classList.toggle("hidden");
+// Header scroll effect
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
     }
-  });
+});
 
-  // Botão de fechar
-  closeMainSites.addEventListener("click", () => {
-    mainSitesModal.classList.add("hidden");
-  });
+// Detecta página atual pelo ID presente
+function detectCurrentPage() {
+    if (document.getElementById('updatePage')) return 'update.html';
+    if (document.getElementById('aboutPage')) return 'about.html';
+    return 'index.html'; // home
+}
 
-  /* =======================
-     Elementos DOM
-  ======================= */
-  const siteHeader = document.getElementById('site-header');
-  const themeToggle = document.getElementById('theme-toggle');
-  const buttonsRow = document.getElementById('buttons-row');
-  const tablesArea = document.getElementById('tables-area');
+// Navegação INTELIGENTE entre páginas
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const page = btn.dataset.page;
+        const currentPage = detectCurrentPage();
+        
+        // Se está na página correta → só ativa botão
+        if (currentPage === page + '.html') {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            return;
+        }
+        
+        // Navega para outra página
+        window.open(page + '.html', '_self');
+    });
+});
 
-  const detailCard = document.getElementById("detail-card");
-  const closeDetail = document.getElementById("close-detail");
-  const detailTitle = document.getElementById("detail-title");
-  const detailDescription = document.getElementById("detail-description");
-  const showImagesBtn = document.getElementById("show-images");
-
-  const carouselModal = document.getElementById("carousel-modal");
-  const carouselLarge = document.getElementById("carousel-large");
-  const closeCarousel = document.getElementById("close-carousel");
-  const prevImgBtn = document.getElementById("prev-img");
-  const nextImgBtn = document.getElementById("next-img");
-  const indicatorsContainer = document.getElementById("carousel-indicators");
-
-  /* =======================
-     Dados das tabelas
-  ======================= */
-  const tabelaDados = {
-    "Jogos": {
-      emoji: "🎮",
-      headers: ["Site", "Sobre", "Link"],
-      rows: [
+// Resto do código HOME (só carrega no index.html)
+if (detectCurrentPage() === 'index.html') {
+// Dados dos sites expandidos
+const sitesData = {
+    games: [
         {
-          produto: "SteamDB",
-          sobre: {
-            descricao: "O SteamDB é um site não oficial, bastante conhecido, usado principalmente para verificar o histórico de promoções dos jogos na Steam. Nele, você pode obter informações como: número de jogadores simultâneos, histórico de preços e até mesmo visualizar seus próprios dados (quanto gastou, por exemplo).",
-            imagens: [
-              "images/site/jogos/steamdb/menu.jpg",
-              "images/site/jogos/steamdb/historico_preco.jpg",
-              "images/site/jogos/steamdb/grafico_jogadores.jpg",
-              "images/site/jogos/steamdb/dados_perfil.jpg"
-            ]
-          },
-          link: "https://steamdb.info/"
+            name: 'Steam',
+            url: 'https://store.steampowered.com/',
+            description: 'Maior plataforma de jogos PC com milhares de títulos, vendas frequentes e comunidade ativa.'
         },
         {
-          produto: "Can You Run It",
-          sobre: {
-            descricao: "Com esse site você consegue ver se seu computador (entre aspas) roda tal jogo ou não, para facilitar sua vida (recomendavel baixar o programinha deles para ver seus componentes e realizar a comparação). Eu não diria que é com a maior precisão mas, pode te dar uma noção melhor",
-            imagens: [
-              "images/site/jogos/canyourunit/cyri_menu.png",
-              "images/site/jogos/canyourunit/cyri_teste.png",
-              "images/site/jogos/canyourunit/cyri_teste2.png"
-            ]
-          },
-          link: "https://www.systemrequirementslab.com/cyri"
-        }
-      ]
-    },
-    "Aleatórios": {
-      emoji: "👻",
-      headers: ["Título", "Sobre", "Link"],
-      rows: [
+            name: 'Epic Games',
+            url: 'https://store.epicgames.com/',
+            description: 'Jogos grátis semanais, launcher exclusivo e suporte a Unreal Engine.'
+        },
         {
-          produto: "Conga",
-          sobre: {
-            descricao: "Perde a graça se dizer oque é",
-            imagens: ["images/site/aleatorio/conga/trust_me.png"]
-          },
-          link: "https://matias.me/nsfw/"
+            name: 'itch.io',
+            url: 'https://itch.io/',
+            description: 'Indies, jogos experimentais e suporte direto aos desenvolvedores independentes.'
         }
-      ]
-    }
-  };
+    ],
+    casino: [
+        {
+            name: 'Stake',
+            url: 'https://stake.com/',
+            description: 'Cassino crypto com apostas esportivas, slots e crash games originais.'
+        },
+        {
+            name: 'Roobet',
+            url: 'https://roobet.com/',
+            description: 'Cassino moderno com provably fair games e streaming ao vivo.'
+        }
+    ],
+    sports: [
+        {
+            name: 'Bet365',
+            url: 'https://www.bet365.com/',
+            description: 'Maior casa de apostas esportivas do mundo com odds competitivas.'
+        },
+        {
+            name: 'Pinnacle',
+            url: 'https://www.pinnacle.com/',
+            description: 'Odds mais altas do mercado, sem limites e foco em apostadores profissionais.'
+        }
+    ]
+};
 
-  /* =======================
-     Variáveis do Carrossel
-  ======================= */
-  let currentImages = [];
-  let currentIndex = 0;
-
-  /* =======================
-     Funções Auxiliares
-  ======================= */
-  function abrirDetalhes(titulo, descricao, imagens) {
-    detailTitle.textContent = titulo;
-    detailDescription.textContent = descricao;
-
-    currentImages = imagens;
-    currentIndex = 0;
-
-    detailCard.classList.remove("hidden");
-  }
-
-  function fecharDetalhes() {
-    detailCard.classList.add("hidden");
-  }
-
-  function abrirCarrossel() {
-    if (!currentImages.length) return;
-    renderCarousel();
-    carouselModal.classList.remove("hidden");
-  }
-
-  function fecharCarrossel() {
-    carouselModal.classList.add("hidden");
-  }
-
-  function renderCarousel() {
-    // Renderiza imagem
-    carouselLarge.innerHTML = "";
-    const img = document.createElement("img");
-    img.src = currentImages[currentIndex];
-    carouselLarge.appendChild(img);
-
-    // Renderiza indicadores
-    indicatorsContainer.innerHTML = "";
-    currentImages.forEach((_, i) => {
-      const dot = document.createElement("span");
-      dot.classList.add("dot");
-      if (i === currentIndex) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        currentIndex = i;
-        renderCarousel();
-      });
-      indicatorsContainer.appendChild(dot);
+// Função para remover todos os detalhes
+function removeAllSiteDetails() {
+    document.querySelectorAll('.site-detail-card').forEach(card => {
+        card.classList.remove('visible');
     });
-  }
+}
 
-  /* =======================
-     Criação de Botões e Tabelas
-  ======================= */
-  Object.keys(tabelaDados).forEach((key, index) => {
+// Função para LIMPAR SITES completamente
+function clearSites() {
+    document.getElementById('cardContainer').innerHTML = '';
+    removeAllSiteDetails();
+}
 
-    // --- Botão da categoria ---
-    const btn = document.createElement("button");
-    btn.classList.add("tab-btn");
-    btn.dataset.target = `table-${index}`;
-    btn.textContent = `${tabelaDados[key].emoji} ${key}`;
-    buttonsRow.appendChild(btn);
+// Função para pegar nome da categoria (texto visível)
+function getCategoryName(btn) {
+    return btn.querySelector('span').textContent.toLowerCase();
+}
 
-    // --- Tabela ---
-    const tableBox = document.createElement("div");
-    tableBox.id = `table-${index}`;
-    tableBox.classList.add("table-box", "hidden");
+// ORDENAÇÃO A-Z, Z-A e FILTRO por LETRA INICIAL
+let currentSort = 'az';
+let currentLetter = '';
 
-    const h3 = document.createElement("h3");
-    h3.textContent = `${tabelaDados[key].emoji} ${key}`;
-    tableBox.appendChild(h3);
+document.querySelectorAll('.sort-btn, .letter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active de TODOS os botões
+        document.querySelectorAll('.sort-btn, .letter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-    const table = document.createElement("table");
+        // Define modo atual
+        if (btn.classList.contains('sort-btn')) {
+            currentSort = btn.dataset.sort;
+            currentLetter = '';
+        } else {
+            currentLetter = btn.dataset.letter.toLowerCase();
+            currentSort = '';
+        }
 
-    // Cabeçalho
-    const thead = document.createElement("thead");
-    const trHead = document.createElement("tr");
-    tabelaDados[key].headers.forEach(header => {
-      const th = document.createElement("th");
-      th.textContent = header;
-      trHead.appendChild(th);
+        // ✅ SEMPRE limpa sites ao mudar filtro
+        clearSites();
+        filterAndSortCategories();
     });
-    thead.appendChild(trHead);
-    table.appendChild(thead);
-
-    // Corpo
-    const tbody = document.createElement("tbody");
-    tabelaDados[key].rows.forEach(item => {
-      const tr = document.createElement("tr");
-
-      // Produto
-      const tdProduto = document.createElement("td");
-      tdProduto.textContent = item.produto;
-      tr.appendChild(tdProduto);
-
-      // Sobre -> link "ver"
-      const tdSobre = document.createElement("td");
-      const linkSobre = document.createElement("a");
-      linkSobre.href = "#";
-      linkSobre.textContent = "ver";
-      linkSobre.addEventListener("click", e => {
-        e.preventDefault();
-        abrirDetalhes(item.produto, item.sobre.descricao, item.sobre.imagens);
-      });
-      tdSobre.appendChild(linkSobre);
-      tr.appendChild(tdSobre);
-
-      // Nota -> link externo
-      const tdNota = document.createElement("td");
-      const linkNota = document.createElement("a");
-      linkNota.href = item.link;
-      linkNota.target = "_blank";
-      linkNota.textContent = "Acessar";
-      tdNota.appendChild(linkNota);
-      tr.appendChild(tdNota);
-
-      tbody.appendChild(tr);
-    });
-    table.appendChild(tbody);
-
-    tableBox.appendChild(table);
-    tablesArea.appendChild(tableBox);
-  });
-
-  /* =======================
-     Alternar Tabelas
-  ======================= */
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".table-box").forEach(tb => tb.classList.add("hidden"));
-      const target = document.getElementById(btn.dataset.target);
-      if (target) target.classList.remove("hidden");
-    });
-  });
-
-  /* =======================
-     Eventos de Modal e Carrossel
-  ======================= */
-  showImagesBtn.addEventListener("click", abrirCarrossel);
-  closeDetail.addEventListener("click", fecharDetalhes);
-  closeCarousel.addEventListener("click", fecharCarrossel);
-
-  prevImgBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    renderCarousel();
-  });
-
-  nextImgBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    renderCarousel();
-  });
-
-  /* =======================
-     Tema Claro/Escuro
-  ======================= */
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light");
-  });
-
-  /* =======================
-     Blur Header ao rolar
-  ======================= */
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) siteHeader.classList.add("scrolled");
-    else siteHeader.classList.remove("scrolled");
-  });
 });
+
+function filterAndSortCategories() {
+    const buttonsGrid = document.getElementById('buttonsGrid');
+    const categoryBtns = Array.from(document.querySelectorAll('.category-btn'));
+
+    // 1. RESETA TODOS os estilos primeiro
+    categoryBtns.forEach(btn => {
+        btn.style.display = 'none';
+        btn.style.opacity = '0';
+    });
+
+    let filteredBtns = categoryBtns;
+
+    // 2. FILTRA por letra inicial se selecionada
+    if (currentLetter) {
+        filteredBtns = categoryBtns.filter(btn => {
+            return getCategoryName(btn).startsWith(currentLetter);
+        });
+    }
+
+    // 3. ORDENA se A-Z ou Z-A (MOSTRA TODOS na ordem correta)
+    if (!currentLetter && currentSort) {
+        filteredBtns = categoryBtns.slice();
+        filteredBtns.sort((a, b) => {
+            if (currentSort === 'az') {
+                return getCategoryName(a).localeCompare(getCategoryName(b));
+            } else if (currentSort === 'za') {
+                return getCategoryName(b).localeCompare(getCategoryName(a));
+            }
+            return 0;
+        });
+    }
+
+    // 4. Aplica estilos aos filtrados/ordenados
+    filteredBtns.forEach(btn => {
+        btn.style.display = 'flex';
+        btn.style.opacity = '1';
+    });
+
+    // 5. Reordena no DOM mantendo todos os elementos
+    filteredBtns.forEach(btn => {
+        buttonsGrid.appendChild(btn);
+    });
+}
+
+// Navegação Header
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const page = btn.dataset.page;
+
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(page + 'Page').classList.add('active');
+
+        if (page === 'home') {
+            clearSites();
+            filterAndSortCategories();
+        }
+    });
+});
+
+// ✅ EVENT DELEGATION PERFEITO
+document.addEventListener('click', (e) => {
+    // Category buttons - SEMPRE limpa sites antes
+    if (e.target.closest('.category-btn')) {
+        const btn = e.target.closest('.category-btn');
+        const category = btn.dataset.category;
+        clearSites(); // ✅ LIMPA sites ANTES de mostrar novos
+        showSitesList(category);
+        return;
+    }
+
+    // Cards dos sites
+    if (e.target.classList.contains('site-btn')) {
+        e.stopPropagation();
+        const item = e.target.closest('.site-item');
+        const detailCard = item.querySelector('.site-detail-card');
+
+        document.querySelectorAll('.site-detail-card').forEach(card => {
+            card.classList.remove('visible');
+        });
+
+        detailCard.classList.add('visible');
+        return;
+    }
+
+    if (e.target.classList.contains('close-card')) {
+        e.stopPropagation();
+        e.target.closest('.site-detail-card').classList.remove('visible');
+        return;
+    }
+
+    if (!e.target.closest('.site-item')) {
+        document.querySelectorAll('.site-detail-card').forEach(card => {
+            card.classList.remove('visible');
+        });
+    }
+});
+
+function showSitesList(category) {
+    const container = document.getElementById('cardContainer');
+    const sites = sitesData[category] || [];
+
+    let html = `<div class="sites-list">`;
+
+    sites.forEach((site, index) => {
+        html += `
+            <div class="site-item">
+                <button class="site-btn" data-category="${category}" data-site="${index}">
+                    ${site.name}
+                </button>
+                <div class="site-detail-card">
+                    <button class="close-card">×</button>
+                    <h4>${site.name}</h4>
+                    <p class="site-detail-description">${site.description}</p>
+                    <a href="${site.url}" target="_blank" class="site-visit-btn">
+                        Visitar Site →
+                    </a>
+                </div>
+            </div>
+        `;
+    });
+
+    html += `</div>`;
+    container.innerHTML = html;
+}
+
+// BARRA DE PESQUISA
+const searchInput = document.querySelector('.search-input');
+
+searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    const buttons = document.querySelectorAll('.category-btn');
+
+    if (query !== '') {
+        clearSites();
+    }
+
+    buttons.forEach(btn => {
+        const categoryName = getCategoryName(btn);
+        if (query === '' || categoryName.includes(query)) {
+            btn.style.display = 'flex';
+            btn.style.opacity = '1';
+        } else {
+            btn.style.display = 'none';
+        }
+    });
+});
+
+searchInput.addEventListener('focus', () => {
+    searchInput.select();
+});
+
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        searchInput.blur();
+    }
+});
+
+// Inicializa ordenação
+filterAndSortCategories();
+
+// No final do script.js, adicione esta função:
+function navigateToPage(page) {
+    if (page === 'update') {
+        window.open('update.html', '_self'); // Abre página separada
+        return;
+    }
+
+    // Resto da navegação normal (home/about)
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+    document.getElementById(page + 'Page').classList.add('active');
+    e.target.classList.add('active');
+}
+
+// Substitua o event listener do header por:
+document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const page = btn.dataset.page;
+        navigateToPage(page);
+    });
+})
+};
