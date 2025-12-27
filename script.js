@@ -16,6 +16,19 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
     });
 });
 
+const btn = document.getElementById("showEmail");
+const emailField = document.getElementById("email");
+
+if (btn) {
+  btn.addEventListener("click", () => {
+    const user = "techsensacao";
+    const domain = "gmail.com";
+    emailField.textContent = `${user}@${domain}`;
+    btn.remove(); // remove o botão depois de mostrar
+  });
+}
+
+
 /* =========================
    DADOS DOS SITES
 ========================= */
